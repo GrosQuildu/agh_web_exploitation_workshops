@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Create post{% endblock %}
+
+{% block content_title %}Create post{% endblock %}
+
+{% block content %}
+  <form action="" class="form-horizontal" method="post">
+    {{ form.hidden_tag() }}
+    <div class="form-group">
+      <label for="title" class="col-sm-2 control-label">Title</label>
+      <div class="col-sm-10">
+        {{ form.title(size=62) }}
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="Content" class="col-sm-2 control-label">Content</label>
+      <div class="col-sm-10">
+        {{ form.content(size=510) }}
+      </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        {{ form.submit() }}
+      </div>
+    </div>
+  </form>
+{% endblock %}
