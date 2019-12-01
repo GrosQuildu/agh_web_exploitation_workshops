@@ -1,0 +1,36 @@
+{% extends "admin/base_site.html" %}
+
+{% load i18n static %}
+{% block extrastyle %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static "css/admin-extra.css" %}" />
+{% endblock %}
+
+{% block title %}Elixirs{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">Elixirs</a></h1>
+{% endblock %}
+
+{% block content_title %}
+    <h1>
+    {% if title and title != 'Site administration' %}
+        {{ title }}
+    {% else %}
+        Find the list below
+    {% endif %}
+    </h1>
+{% endblock %}
+
+{% block userlinks %}
+    {% if site_url %}
+        <a href="{{ site_url }}">{% trans 'View site' %}</a> /
+    {% endif %}
+    {% if user.is_active and user.is_staff %}
+        {% url 'django-admindocs-docroot' as docsroot %}
+        {% if docsroot %}
+            <a href="{{ docsroot }}">{% trans 'Documentation' %}</a> /
+        {% endif %}
+    {% endif %}
+    <a href="{% url 'admin:logout' %}">{% trans 'Log out' %}</a>
+{% endblock %}
