@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content_title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+    {% if post %}
+      <p>Created {{ post.timestamp.strftime('%m/%d/%Y at %I:%M%p') }} by {{ post.user.username }}</p>
+      {{ post.content }}
+    {% else %}
+    <p>No such post</p>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Blog entries{% endblock %}
+
+{% block content_title %}Blog entries{% endblock %}
+
+{% block content %}
+  <h1>Hello traveler!</h1>
+  {% for post in posts %}
+    <h3><a href="{{ url_for('detail', slug=post.slug) }}">
+        {{ post.title }}</a>
+    </h3>
+    <p>Created {{ post.timestamp.strftime('%m/%d/%Y at %G:%I%p') }} by {{ post.author.username }}</p>
+  {% else %}
+    <p>No entries have been created yet.</p>
+  {% endfor %}
+{% endblock %}
